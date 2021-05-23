@@ -12,4 +12,6 @@ public interface UserService {
 	void update(User user);
 
 	void remove(User user);
+
+	void verificationByEmail(User user);
 }

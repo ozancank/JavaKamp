@@ -28,6 +28,7 @@ public class UserManager implements UserService {
 	public void add(User user) {
 		if (rules(user))
 			return;
+		emailSend(user);
 		userDao.add(user, "Veri eklendi: " + user.getFirstName() + " " + user.getLastName());
 	}
 
@@ -41,6 +42,13 @@ public class UserManager implements UserService {
 	@Override
 	public void remove(User user) {
 		userDao.delete(user, "Veri silindi: " + user.getFirstName() + " " + user.getLastName());
+	}
+
+	@Override
+	public void verificationByEmail(User user) {
+		user.setConfirm_email(true);
+		update(user);
+		System.out.println("Email doðrulamasý gerçekleþtirildi.");
 	}
 
 	private boolean rules(User user) {
@@ -86,4 +94,9 @@ public class UserManager implements UserService {
 
 		return false;
 	}
+
+	private void emailSend(User user) {
+		System.out.println("Doðrulama emaili gönderildi: " + user.getEmail());
+	}
+
 }
