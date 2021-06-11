@@ -11,7 +11,7 @@ export default function ProductList() {
       .getProducts()
       .then((result) => setProducts(result.data.data))
       .catch();
-  });
+  },[]);
 
   return (
     <div>
