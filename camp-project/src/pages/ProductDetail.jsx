@@ -12,7 +12,7 @@ export default function ProductDetail() {
     productService
       .getByProductName(name)
       .then((result) => setProduct(result.data.data));
-  }, [name]);
+  }, []);
 
   return (
     <div>
@@ -22,10 +22,10 @@ export default function ProductDetail() {
             <Image
               floated="right"
               size="mini"
-              src="/images/avatar/large/steve.jpg"
+              src="https://via.placeholder.com/40/40"
             />
             <Card.Header>{product.productName}</Card.Header>
-            <Card.Meta>{product.category?.categoryName}</Card.Meta>
+            <Card.Meta>{product.category && product.category.categoryName}</Card.Meta>
             <Card.Description>
               Steve wants to add you to the group <strong>best friends</strong>
             </Card.Description>
